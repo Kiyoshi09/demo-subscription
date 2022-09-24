@@ -1,6 +1,8 @@
+import styled from 'styled-components';
 import { EmailInput } from "../atoms/EmailInput";
 import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, AccordionItemPanel } from "react-accessible-accordion";
 //import "react-accessible-accordion/dist/fancy-example.css";
+import "./BodyMiddle3.scss";
 
 export const BodyMiddle3 = () => {
   const items = [
@@ -40,13 +42,13 @@ export const BodyMiddle3 = () => {
   ];
 
   return (
-    <div className="body-middle3-container">
-      <div className="title">
+    <BodyMiddle3Container>
+      <TitleContainer>
         <h1>Frequently Asked Questions</h1>
-      </div>
-      <div className="faq">
-        <div className="spacer1"></div>
-        <div className="accordition">
+      </TitleContainer>
+      <FaqContainer>
+        <Spacer1 />
+        <AccorditionContainer>
           <Accordion className="accordition-main" allowZeroExpanded>
             {items.map((item) => (
               <AccordionItem className="accordition-item" key={item.uuid}>
@@ -57,13 +59,78 @@ export const BodyMiddle3 = () => {
               </AccordionItem>
             ))}
           </Accordion>
-        </div>
-        <div className="spacer2"></div>
-      </div>
-      <div className="registration">
+        </AccorditionContainer>
+        <Spacer2 />
+      </FaqContainer>
+      <RegistrationContainer>
         <p>Ready to watch? Enter your email to create or restart your membership.</p>
-        <EmailInput />
-      </div>
-    </div>
+        <EmailInput top={"70px"}/>
+      </RegistrationContainer>
+    </BodyMiddle3Container>
   );
 };
+
+const BodyMiddle3Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -100px;
+  border-bottom: 0.5rem solid #222;
+  min-height: 95vh;
+
+  > h1 {
+    font-size: 3rem;
+  }
+
+  > h2 {
+    font-size: 1.4rem;
+  }
+`;
+
+const TitleContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 20%;
+  color: #fff;
+  text-align: center;
+
+  > h1 {
+    font-size: 3rem;
+  }
+`;
+
+const FaqContainer = styled.div`
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;
+
+const Spacer1 = styled.div`
+  width: 50%;
+`;
+
+const Spacer2 = styled.div`
+  width: 50%;
+`;
+
+const AccorditionContainer = styled.div`
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  font-size: 1.5rem;
+`;
+
+const RegistrationContainer = styled.div`
+  position: relative;
+  top: 30px;
+  width: 100%;
+  height: 25%;
+
+  > p {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+  }
+`;

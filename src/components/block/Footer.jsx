@@ -1,4 +1,6 @@
-export const Footer = () => {
+import styled from 'styled-components';
+
+export const Footer = ({ top, height = "20vh" }) => {
   const item1 = [
     {
       id: 11,
@@ -63,7 +65,7 @@ export const Footer = () => {
     },
     {
       id: 34,
-      title: "Act on Specified Commercial Transactions",
+      title: "Transactions",
       url: "#"
     }
   ];
@@ -92,37 +94,75 @@ export const Footer = () => {
   ];
 
   return (
-    <div className="footer-container">
-      <div className="spacer1"></div>
-      <div className="footer-area1">
+    <FooterContainer top={top} height={height}>
+      <Spacer1 />
+      <FooterArea1>
         {item1.map((item) => (
           <p key={item.id}>
             <a href={item.url}>{item.title}</a>
           </p>
         ))}
-      </div>
-      <div className="footer-area2">
+      </FooterArea1>
+      <FooterArea2>
         {item2.map((item) => (
           <p key={item.id}>
             <a href={item.url}>{item.title}</a>
           </p>
         ))}
-      </div>
-      <div className="footer-area3">
+      </FooterArea2>
+      <FooterArea3>
         {item3.map((item) => (
           <p key={item.id}>
             <a href={item.url}>{item.title}</a>
           </p>
         ))}
-      </div>
-      <div className="footer-area4">
+      </FooterArea3>
+      <FooterArea4>
         {item4.map((item) => (
           <p key={item.id}>
             <a href={item.url}>{item.title}</a>
           </p>
         ))}
-      </div>
-      <div className="spacer2"></div>
-    </div>
+      </FooterArea4>
+      <Spacer2 />
+    </FooterContainer>
   );
 };
+
+const FooterContainer = styled.div`
+  display: flex;
+  position: relative;
+  height: ${ props => props.height };
+  /* top: -100px; */
+  top: ${ props => props.top };
+  padding-top: 70px;
+
+  p a {
+    text-decoration: none;
+    color: #333333;
+  }
+`;
+
+const Spacer1 = styled.div`
+  width: 100%;
+`;
+
+const Spacer2 = styled.div`
+  width: 100%;
+`;
+
+const FooterArea1 = styled.div`
+  width: 70%;
+`;
+
+const FooterArea2 = styled.div`
+  width: 70%;
+`;
+
+const FooterArea3 = styled.div`
+  width: 70%;
+`;
+
+const FooterArea4 = styled.div`
+  width: 70%;
+`;
