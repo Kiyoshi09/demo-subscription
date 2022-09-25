@@ -122,7 +122,7 @@ export const Row = ({ title, fetchUrl, isLargeRow }) => {
               <span style={{paddingLeft: "20px", fontSize: "1.2rem"}}>({trailerMovie.vote_count.toLocaleString()})</span>
             </div>
             <p style={{color: "white", paddingRight: "40px"}}>{trailerMovie.overview}</p>
-            <Votes />
+            <Votes mid={trailerMovie.id} poster={trailerMovie.poster_path}/>
           </div>
         </TrailerArea>
       }

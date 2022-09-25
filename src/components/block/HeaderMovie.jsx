@@ -127,7 +127,7 @@ export const HeaderMovie = ({SearchMode, SearchKeyword}) => {
             </AccountMenuItem>
             <AccountMenuItem>
               <FontAwesomeIcon icon={faRightFromBracket} size="lg" />
-              <AccountMenuItemLink href="#" onClick={onSignOut}>Sign Out</AccountMenuItemLink>
+              <AccountMenuItemLink href="/" onClick={onSignOut}>Sign Out</AccountMenuItemLink>
             </AccountMenuItem>
           </AccountMenuArea>
         </HeaderContainerSignIn>

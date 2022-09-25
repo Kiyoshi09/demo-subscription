@@ -42,7 +42,7 @@ const SearchMovieBox = ({movie, trailerUrl, onClose}) => {
               <span style={{paddingLeft: "20px", fontSize: "1.2rem"}}>({movie.vote_count.toLocaleString()})</span>
             </div>
             <p style={{color: "white", paddingRight: "40px"}}>{movie.overview}</p>
-            <Votes />
+            <Votes mid={movie.id} poster={movie.poster_path}/>
           </div>
         </TrailerArea>
     </Wrapper>

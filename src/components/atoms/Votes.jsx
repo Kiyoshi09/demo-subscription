@@ -1,19 +1,109 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCirclePlus, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faCirclePlus, faThumbsUp, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { useEffect, useState } from "react";
 
-export const Votes = () => {
+export const Votes = ({ mid, poster }) => {
+
+  const [ isInWishList, setIsInWishList ] = useState(false);
+  const [ isLike, setIsLike ] = useState(false);
+
+  const onClickWishList = () => {
+    setIsInWishList(prevIsWishList => !prevIsWishList);
+
+    const lsWishList = localStorage.getItem("tealdemo-st-wish");
+    let o = {};
+
+    if(lsWishList) {
+      o = JSON.parse(lsWishList);
+      o[mid] = (typeof o[mid] !== 'undefined' ? !o[mid] : true);
+    }
+    else {
+      o[mid] = true;
+    }
+
+    localStorage.setItem("tealdemo-st-wish", JSON.stringify(o));
+
+    const lsWishPoster = localStorage.getItem("tealdemo-st-wish-poster");
+    let p = {};
+
+    if(lsWishPoster) {
+      p = JSON.parse(lsWishPoster);
+    }
+
+    p[mid] = poster;
+    localStorage.setItem("tealdemo-st-wish-poster", JSON.stringify(p));
+  }
+
+  const onClickLike = () => {
+    setIsLike(prevIsLike => !prevIsLike);
+
+    const lsLike = localStorage.getItem("tealdemo-st-like");
+    let o = {};
+
+    if(lsLike) {
+      o = JSON.parse(lsLike);
+      o[mid] = (typeof o[mid] !== 'undefined' ? !o[mid] : true);
+    }
+    else {
+      o[mid] = true;
+    }
+
+    localStorage.setItem("tealdemo-st-like", JSON.stringify(o));
+  }
+
+  useEffect(() => {
+    const lsLike = localStorage.getItem("tealdemo-st-like");
+    if(lsLike) {
+      const aLike = JSON.parse(lsLike);
+
+      if(aLike[mid] === true){
+        setIsLike(true);
+      }
+      else {
+        setIsLike(false);
+      }
+    }
+
+    const lsWishList = localStorage.getItem("tealdemo-st-wish");
+    if(lsWishList) {
+      const aWlist = JSON.parse(lsWishList);
+
+      if(aWlist[mid] === true){
+        setIsInWishList(true);
+      }
+      else {
+        setIsInWishList(false);
+      }
+    }
+  }, [])
+
   return (
     <VoteArea>
       <Vote>
-        <VoteButton>
-          <FontAwesomeIcon icon={faCirclePlus} size="lg"/><span style={{ marginLeft: "7px" }}>My List</span>
+        <VoteButton onClick={onClickWishList}>
+          {
+            isInWishList &&
+            <><FontAwesomeIcon icon={faCircleCheck} size="lg"/></>
+          }
+          {
+            isInWishList ||
+            <><FontAwesomeIcon icon={faCirclePlus} size="lg"/><span style={{ marginLeft: "7px" }}>My List</span></>
+          }
         </VoteButton>
       </Vote>
 
       <Vote>
-        <VoteButton>
-          <FontAwesomeIcon icon={faThumbsUp} size="lg"/><span style={{ marginLeft: "7px" }}>Like</span>
+        <VoteButton onClick={onClickLike}>
+          {
+            isLike &&
+            <><FontAwesomeIcon icon={faCircleCheck} size="lg"/><span style={{ marginLeft: "5px" }}>Like!</span></>
+          }
+          {
+            isLike ||
+            <><FontAwesomeIcon icon={faThumbsUp} size="lg"/><span style={{ marginLeft: "7px" }}>Like</span></>
+            
+          }
         </VoteButton>
       </Vote>
 
