@@ -37,7 +37,6 @@ export const Row = ({ title, fetchUrl, isLargeRow }) => {
 
   const handleClick = async (movie) => {
     // Debug
-    // console.log(`title : ${movie.title}`);
     // console.log(`vote average : ${movie.vote_average}`);
     // console.log(`vote count : ${movie.vote_count}`);
 
