@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useLayoutEffect, useState } from "react"
+import { ToastContainer, toast } from 'react-toastify';
 import { instance } from "../../utils/axios";
 import { requests } from "../../utils/request";
 import MainMovieBox from './MainMovieBox';
@@ -41,6 +42,17 @@ export const Banner = () => {
     );
     setTrailerUrl(trailerurl.data.results[0]?.key)
   }
+
+  const onClickMyList = async (movie) => {
+    toast("🥹 sorry but My List is under construction...", {
+      position: "top-left",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  }
   
   const onClose = async () => {
     console.log(`Close....`);
@@ -56,7 +68,8 @@ export const Banner = () => {
         </BannerTitle>
         <div>
           <BannerButton onClick={ () => onPlayMovie(movie) }>Play</BannerButton>
-          <BannerButton>My List</BannerButton>
+          <BannerButton onClick={ () => onClickMyList(movie) }>My List</BannerButton>
+          <ToastContainer />
         </div>
         <BannerDescription>{truncate(movie?.overview, 150)}</BannerDescription>
 

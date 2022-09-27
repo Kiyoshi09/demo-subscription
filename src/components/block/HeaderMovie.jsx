@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faCircleUser, faRightFromBracket, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { Auth } from 'aws-amplify';
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 
 export const HeaderMovie = ({SearchMode, SearchKeyword}) => {
   const [ isSearch, setIsSearch ] = useState(0);
@@ -27,6 +28,13 @@ export const HeaderMovie = ({SearchMode, SearchKeyword}) => {
   }
 
   const onOpenAccountPage = () => {
+    toast("🥹 sorry but the account page is under construction...", {
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
     
   }
 
@@ -132,6 +140,7 @@ export const HeaderMovie = ({SearchMode, SearchKeyword}) => {
           </AccountMenuArea>
         </HeaderContainerSignIn>
       </HeaderContainerRight>
+      <ToastContainer />
     </HeaderContainer>
   );
 };
