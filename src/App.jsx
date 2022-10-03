@@ -6,7 +6,13 @@ import { BodyMiddle2 } from "./components/block/BodyMiddle2";
 import { BodyMiddle3 } from "./components/block/BodyMiddle3";
 import { Footer } from "./components/block/Footer";
 
-function App() {
+const App = () => {
+
+  // Tealium Data Layer (Sample)
+  // let components = window.utag_data?.components || [];
+  // components = [...components, "App"];
+  // window.utag_data = {...window.utag_data, components}
+
   return (
     <div className="App">
       <Header />

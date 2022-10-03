@@ -13,8 +13,8 @@ export const TealiumTrackingRoutes = () => {
   useEffect(() => {
 
     const timeoutId = setTimeout(() => {
-      console.log(`=== TealiumTrackingRoutes useEffect utag : ${typeof window.utag}`);
-      window.utag && window.utag.view({"path_name": location.pathname});
+      //console.log(`=== TealiumTrackingRoutes useEffect utag : ${typeof window.utag}`);
+      window.utag && window.utag.view({"path_name": location.pathname, ...window.utag_data});
     }, 500);
 
     return () => {

@@ -8,6 +8,11 @@ export const Header = () => {
     navigate("/signin");
   };
 
+  // Tealium Data Layer - Sample
+  // let components = window.utag_data?.components || [];
+  // components = [...components, "Header"];
+  // window.utag_data = {...window.utag_data, components}
+
   return (
     <HeaderContainer>
       <HeaderContainerLogo>
