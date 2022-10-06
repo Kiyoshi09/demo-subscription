@@ -5,6 +5,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const EmailInput = ({ top }) => {
+  console.log("[Rendering] === EmailInput ==="); 
+
   const navigate = useNavigate();
 
   const onGetStarted = () => {

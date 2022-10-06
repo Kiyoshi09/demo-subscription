@@ -4,10 +4,10 @@ import { Navigate } from "react-router-dom";
 import { MyAuthenticator } from "../components/atoms/MyAuthenticator";
 
 export const Registration = () => {
+  console.log("[Rendering] === Registration ==="); 
+
   const location = useLocation();
   const email = location.state.email
-
-  console.log("Registration !!");
 
   return (
     <RegistrationArea>

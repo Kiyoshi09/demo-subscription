@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 export const MyAuthenticator = ({ initialState, email, children }) => {
 
+  console.log("[Rendering] === MyAuthenticator ==="); 
+
   const components = {
     Header() {
       const { tokens } = useTheme();

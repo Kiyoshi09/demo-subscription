@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 
 export const Votes = ({ mid, poster }) => {
 
+  console.log("[Rendering] === Votes ==="); 
+
   const [ isInWishList, setIsInWishList ] = useState(false);
   const [ isLike, setIsLike ] = useState(false);
 

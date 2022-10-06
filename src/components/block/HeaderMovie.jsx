@@ -5,8 +5,11 @@ import { faSearch, faCircleUser, faRightFromBracket, faCircleXmark } from '@fort
 import { Auth } from 'aws-amplify';
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
+import { memo } from "react";
 
-export const HeaderMovie = ({SearchMode, SearchKeyword}) => {
+export const HeaderMovie = memo(({SearchMode, SearchKeyword}) => {
+  console.log("[Rendering] === HeaderMovie ==="); 
+
   const [ isSearch, setIsSearch ] = useState(0);
   const [ isMenuOpen, setIsMenuOpen ] = useState(0);
   const insideRef = useRef(null);
@@ -143,7 +146,7 @@ export const HeaderMovie = ({SearchMode, SearchKeyword}) => {
       <ToastContainer />
     </HeaderContainer>
   );
-};
+});
 
 const HeaderContainer = styled.div`
   position: fixed;
@@ -178,20 +181,6 @@ const HeaderContainerSignIn = styled(HeaderContainer)`
   background-color: transparent;
   top: -9px;
 `;
-
-// const FontAwesomeIconAccount = styled(FontAwesomeIcon)`
-//   //color: #99EAFF;
-//   color: #ffff00;
-//   position: relative;
-//   left: 15px;
-//   top: 12px;
-//   transition: transform 0.5s ease-out;
-
-//   &:hover {
-//     color: #ff69b4;
-//     /* transform: rotate(360deg); */
-//   }
-// `
 
 const CircleAccountIcon = styled.span`
   display: inline-block;

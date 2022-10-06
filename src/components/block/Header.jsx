@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export const Header = () => {
+  console.log("[Rendering] === Header ===");
+
   const navigate = useNavigate();
   const onButtonClick = () => {
     console.log("Sign in ....");

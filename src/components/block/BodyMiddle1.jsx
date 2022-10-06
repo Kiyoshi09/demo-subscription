@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const BodyMiddle1 = () => {
+  console.log("[Rendering] === BodyMiddle1 ===");
+
   return (
     <BoddyMiddle1Container>
       <Spacer1 />

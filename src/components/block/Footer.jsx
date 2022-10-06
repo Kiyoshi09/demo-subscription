@@ -1,6 +1,9 @@
+import { memo } from 'react';
 import styled from 'styled-components';
 
-export const Footer = ({ top, height = "20vh" }) => {
+export const Footer = memo(({ top, height = "20vh" }) => {
+  console.log("[Rendering] === Footer ==="); 
+
   const item1 = [
     {
       id: 11,
@@ -127,7 +130,7 @@ export const Footer = ({ top, height = "20vh" }) => {
       <Spacer2 />
     </FooterContainer>
   );
-};
+});
 
 const FooterContainer = styled.div`
   display: flex;

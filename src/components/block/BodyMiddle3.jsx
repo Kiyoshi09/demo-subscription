@@ -5,6 +5,8 @@ import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, Ac
 import "./BodyMiddle3.scss";
 
 export const BodyMiddle3 = () => {
+  console.log("[Rendering] === BodyMiddle3 ===");
+
   const items = [
     {
       uuid: 1,

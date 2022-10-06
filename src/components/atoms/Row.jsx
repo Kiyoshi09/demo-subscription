@@ -6,10 +6,13 @@ import { instance } from "../../utils/axios";
 import { Votes } from "./Votes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import { memo } from "react";
 
 const base_url = "https://image.tmdb.org/t/p/original";
 
-export const Row = ({ title, fetchUrl, isLargeRow }) => {
+export const Row = memo(({ title, fetchUrl, isLargeRow }) => {
+  console.log("[Rendering] === Row ==="); 
+
   const [ movies, setMovies ] = useState([]);
   const [ trailerUrl, setTrailerUrl ] = useState("");
   const [ trailerMovie, setTrailerMovie ] = useState({});
@@ -127,7 +130,7 @@ export const Row = ({ title, fetchUrl, isLargeRow }) => {
       }
     </RowArea>
   );
-}
+});
 
 const RowArea = styled.div`
   margin-left: 20px;

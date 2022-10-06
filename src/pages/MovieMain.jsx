@@ -7,6 +7,7 @@ import { HeaderMovie } from "../components/block/HeaderMovie";
 import { requests } from "../utils/request";
 
 export const MovieMain = () => {
+  console.log("[Rendering] === MovieMain ===");
 
   const [ isSearching, setIsSearching ] = useState(0);
   const [ keyword, setKeyword ] = useState("");

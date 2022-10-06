@@ -5,6 +5,7 @@ import { Navigate } from "react-router-dom";
 
 export const SignIn = () => {
   //const navigate = useNavigate();
+  console.log("[Rendering] === SignIn ===");
 
   return (
     <SignInArea>

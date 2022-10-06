@@ -6,6 +6,8 @@ import { requests } from "../../utils/request";
 import MainMovieBox from './MainMovieBox';
 
 export const Banner = () => {
+  console.log("[Rendering] === Banner ==="); 
+
   const [ movie, setMovie ] = useState({});
   const [ trailerUrl, setTrailerUrl ] = useState("");
 

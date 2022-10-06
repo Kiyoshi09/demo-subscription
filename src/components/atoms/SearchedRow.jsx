@@ -1,12 +1,14 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react"
+import { memo, useEffect, useState } from "react"
 import { instance } from "../../utils/axios";
 import { requests } from "../../utils/request";
 import SearchMovieBox from './SearchMovieBox';
 
 const base_url = "https://image.tmdb.org/t/p/original";
 
-export const SearchedRow = ({ keyword }) => {
+export const SearchedRow = memo(({ keyword }) => {
+  console.log("[Rendering] === SearchedRow ==="); 
+
   const [ movies, setMovies ] = useState([]);
   const [ trailerUrl, setTrailerUrl ] = useState("");
   const [ trailerMovie, setTrailerMovie ] = useState({});
@@ -56,10 +58,10 @@ export const SearchedRow = ({ keyword }) => {
 
 
   const handleClick = async (movie) => {
-    // Debug
-    console.log(`title(Search) : ${movie.title}`);
-    console.log(`vote average(Search) : ${movie.vote_average}`);
-    console.log(`vote count(Search) : ${movie.vote_count}`);
+    // // Debug
+    // console.log(`title(Search) : ${movie.title}`);
+    // console.log(`vote average(Search) : ${movie.vote_average}`);
+    // console.log(`vote count(Search) : ${movie.vote_count}`);
 
     setTrailerMovie(movie);
 
@@ -73,12 +75,9 @@ export const SearchedRow = ({ keyword }) => {
       //setTrailerUrl(_trailerurl.data.results[0]?.key)
       setTrailerUrl(_trailerurl.data.results[0]?.key || "dummy" )
     }
-
-    console.log(`trailerUrl : ${trailerUrl}`);
   }
 
   const onClose = async () => {
-    console.log(`Close....`);
     setTrailerUrl("");
   }
 
@@ -116,7 +115,7 @@ export const SearchedRow = ({ keyword }) => {
       </RowPosters>
     </RowArea>
   );
-}
+});
 
 const RowArea = styled.div`
   margin-left: 20px;

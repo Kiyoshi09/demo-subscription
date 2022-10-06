@@ -6,6 +6,8 @@ import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import { Votes } from "./Votes";
 
 const MainMovieBox = ({movie, trailerUrl, onClose}) => {
+  console.log("[Rendering] === MainMovieBox ===");
+
   const opts = {
     height: "390",
     width: "640",

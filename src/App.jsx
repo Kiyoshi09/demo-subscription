@@ -7,6 +7,7 @@ import { BodyMiddle3 } from "./components/block/BodyMiddle3";
 import { Footer } from "./components/block/Footer";
 
 const App = () => {
+  console.log("[Rendering] === App ===");
 
   // Tealium Data Layer (Sample)
   // let components = window.utag_data?.components || [];

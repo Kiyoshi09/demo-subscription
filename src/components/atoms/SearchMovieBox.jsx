@@ -7,6 +7,8 @@ import { Votes } from "./Votes";
 
 const SearchMovieBox = ({movie, trailerUrl, onClose}) => {
 
+  console.log("[Rendering] === SearchMovieBox ==="); 
+
   const opts = {
     height: "390",
     width: "640",

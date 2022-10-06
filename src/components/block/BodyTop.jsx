@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { EmailInput } from "../atoms/EmailInput";
 
 export const BodyTop = () => {
+
+  console.log("[Rendering] === BodyTop ===");
+
   return (
     <div className="body-top-container">
       <ImageWrapper>
