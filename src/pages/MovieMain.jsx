@@ -20,7 +20,7 @@ export const MovieMain = () => {
 
       window.utag && 
           window.utag.link({
-            "tealium_event": "authentication",
+            "tealium_event": "authenticated",
             "email": userInfo.attributes.email,
           });
     }
