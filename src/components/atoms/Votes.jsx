@@ -1,3 +1,4 @@
+/*eslint react-hooks/exhaustive-deps: 0 */
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePlus, faThumbsUp, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
@@ -35,6 +36,13 @@ export const Votes = ({ mid, poster }) => {
 
     p[mid] = poster;
     localStorage.setItem("tealdemo-st-wish-poster", JSON.stringify(p));
+
+    // Tealium Tracking
+    window.utag && 
+    window.utag.link({
+      "tealium_event": "wish-event",
+      "movieid": mid,
+    });
   }
 
   const onClickLike = () => {
@@ -52,6 +60,13 @@ export const Votes = ({ mid, poster }) => {
     }
 
     localStorage.setItem("tealdemo-st-like", JSON.stringify(o));
+
+    // Tealium Tracking
+    window.utag && 
+      window.utag.link({
+        "tealium_event": "like-event",
+        "movieid": mid,
+      });
   }
 
   useEffect(() => {

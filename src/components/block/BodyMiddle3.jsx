@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { EmailInput } from "../atoms/EmailInput";
-import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, AccordionItemPanel } from "react-accessible-accordion";
+import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, AccordionItemPanel, AccordionItemState } from "react-accessible-accordion";
 //import "react-accessible-accordion/dist/fancy-example.css";
 import "./BodyMiddle3.scss";
 
@@ -43,6 +43,16 @@ export const BodyMiddle3 = () => {
     }
   ];
 
+  const onExpanded = (id) => {
+    console.log(`[${id}]`);
+
+    window.utag && 
+        window.utag.link({
+          "tealium_event": "faq_expanded",
+          "faqid": id,
+        });
+  }
+
   return (
     <BodyMiddle3Container>
       <TitleContainer>
@@ -55,7 +65,14 @@ export const BodyMiddle3 = () => {
             {items.map((item) => (
               <AccordionItem className="accordition-item" key={item.uuid}>
                 <AccordionItemHeading>
-                  <AccordionItemButton className="accordition-item-btn">{item.heading}</AccordionItemButton>
+                  <AccordionItemButton className="accordition-item-btn">
+                    {item.heading}
+                    <AccordionItemState>
+                      {
+                        ({expanded}) => expanded && onExpanded(item.uuid)
+                      }
+                    </AccordionItemState>
+                  </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel className="accordition-item-panel">{item.content}</AccordionItemPanel>
               </AccordionItem>

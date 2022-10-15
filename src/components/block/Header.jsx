@@ -6,7 +6,12 @@ export const Header = () => {
 
   const navigate = useNavigate();
   const onButtonClick = () => {
-    console.log("Sign in ....");
+
+    window.utag && 
+      window.utag.link({
+        "tealium_event": "click_signin",
+      });
+
     navigate("/signin");
   };
 

@@ -11,9 +11,15 @@ export const EmailInput = ({ top }) => {
 
   const onGetStarted = () => {
     const email = document.getElementById("email").value;
-    console.log(`input email : ${email}`);
 
     if(validator.isEmail(email)) {
+
+      window.utag && 
+          window.utag.link({
+            "tealium_event": "get_started",
+            "email": email,
+          });
+
       navigate("/registration", { state: { email } });
     }
     else {

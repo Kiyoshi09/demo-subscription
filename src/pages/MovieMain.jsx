@@ -1,16 +1,32 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Banner } from "../components/atoms/Banner";
 import { Row } from "../components/atoms/Row";
 import { SearchedRow } from "../components/atoms/SearchedRow";
 import { Footer } from "../components/block/Footer";
 import { HeaderMovie } from "../components/block/HeaderMovie";
 import { requests } from "../utils/request";
+import { Auth } from 'aws-amplify';
 
 export const MovieMain = () => {
   console.log("[Rendering] === MovieMain ===");
 
   const [ isSearching, setIsSearching ] = useState(0);
   const [ keyword, setKeyword ] = useState("");
+
+  useEffect(() => {
+    const getCurrentUserInfo = async () => {
+      const userInfo = await Auth.currentUserInfo();
+      console.log(`userInfo : ${JSON.stringify(userInfo)}`);
+
+      window.utag && 
+          window.utag.link({
+            "tealium_event": "authentication",
+            "email": userInfo.attributes.email,
+          });
+    }
+
+    getCurrentUserInfo();
+  }, [])
 
   return (
     <>

@@ -1,3 +1,4 @@
+/*eslint no-unused-vars: 0, array-callback-return: 0 */
 import styled from "styled-components";
 import YouTube from "react-youtube";
 import ReactStars from "react-rating-stars-component";
@@ -17,6 +18,17 @@ export const Row = memo(({ title, fetchUrl, isLargeRow }) => {
   const [ trailerUrl, setTrailerUrl ] = useState("");
   const [ trailerMovie, setTrailerMovie ] = useState({});
 
+  const opts = {
+    height: "390",
+    width: "640",
+    playerVars: {
+      autoplay: 1,
+    }
+  }
+
+  let nInterval = 0;
+  let playerCheckInterval;
+
   useEffect(() => {
     const fetchData = async () => {
       const request = await instance.get(fetchUrl);
@@ -30,18 +42,14 @@ export const Row = memo(({ title, fetchUrl, isLargeRow }) => {
 
   }, [fetchUrl])
 
-  const opts = {
-    height: "390",
-    width: "640",
-    playerVars: {
-      autoplay: 1,
-    }
-  }
-
   const handleClick = async (movie) => {
     // Debug
     // console.log(`vote average : ${movie.vote_average}`);
     // console.log(`vote count : ${movie.vote_count}`);
+    console.log(`movie object : ${JSON.stringify(movie)}`);
+
+    // Stop tracking the current playing movie
+    clearInterval(playerCheckInterval);
 
     setTrailerMovie(movie);
 
@@ -59,6 +67,81 @@ export const Row = memo(({ title, fetchUrl, isLargeRow }) => {
 
   const onCloseTrailerArea = () => {
     setTrailerUrl("");
+    clearInterval(playerCheckInterval);
+  }
+
+  const onReady = (movie) => {
+    console.log(`[${movie.title}] : onReady`);
+  }
+
+  const onPlay = (movie) => {
+    window.utag && 
+      window.utag.link({
+        "tealium_event": "play_movie",
+        "movieid": movie.id,
+        "title": movie.title,
+        "genre_ids": movie.genre_ids,
+      });
+  }
+
+  const onPause = (movie) => {
+    window.utag && 
+      window.utag.link({
+        "tealium_event": "pause_movie",
+        "movieid": movie.id,
+        "title": movie.title,
+        "genre_ids": movie.genre_ids,
+      });
+  }
+
+  const onEnd = (movie) => {
+    console.log(`[${movie.title}] : onEnd`);
+
+    window.utag && 
+      window.utag.link({
+        "tealium_event": "end_movie",
+        "movieid": movie.id,
+        "title": movie.title,
+        "genre_ids": movie.genre_ids,
+      });
+  }
+
+  const onStateChange = (e, movie) => {
+
+    switch (e.data) {
+      case 0: // ended
+        clearInterval(playerCheckInterval);
+        nInterval = 0;
+
+        break;
+
+      case 1: // playing
+        playerCheckInterval = setInterval(() => {
+          nInterval++;
+
+          if(nInterval % 10.0 === 0.0){
+
+            window.utag && 
+              window.utag.link({
+                "tealium_event": "milestone_movie",
+                "movieid": movie.id,
+                "title": movie.title,
+                "genre_ids": movie.genre_ids,
+                "milestone": nInterval,
+              });
+          }
+
+        }, 1000);
+        break;
+
+      case 2: // paused
+        clearInterval(playerCheckInterval);
+        break;
+    
+      default:
+        break;
+    }
+
   }
 
   return (
@@ -101,7 +184,15 @@ export const Row = memo(({ title, fetchUrl, isLargeRow }) => {
         trailerUrl && 
         <TrailerArea>
           <div style={{width: "100%", textAlign: "center"}}>
-            <YouTube videoId={ trailerUrl } opts={ opts } />
+            <YouTube 
+              videoId={ trailerUrl } 
+              opts={ opts } 
+              onReady={() => onReady(trailerMovie)}
+              onPlay={() => onPlay(trailerMovie)}
+              onPause={() => onPause(trailerMovie)}
+              onEnd={() => onEnd(trailerMovie)}
+              onStateChange={(e) => onStateChange(e, trailerMovie)}
+            />
           </div>
           <div style={{width: "10%"}}></div>
           <div style={{width: "100%"}}>

@@ -26,6 +26,12 @@ export const HeaderMovie = memo(({SearchMode, SearchKeyword}) => {
   };
 
   const onSignOut = () => {
+
+    window.utag && 
+      window.utag.link({
+        "tealium_event": "signout",
+      });
+
     signOut();
     navigate("/");
   }
