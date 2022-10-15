@@ -36,7 +36,7 @@ export const EmailInput = ({ top }) => {
   return (
     <>
       <EmailInputContainer top={ top }>
-        <input id="email" name="email" type="email" placeholder="Email Address" />
+        <input id="email" name="email" type="email" placeholder="Email Address"/>
         <label id="email_label">Email Address</label>
       </EmailInputContainer>
       <RegisterButtonContainer  top={ top }>

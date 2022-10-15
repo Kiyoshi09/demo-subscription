@@ -7,7 +7,7 @@ export const Registration = () => {
   console.log("[Rendering] === Registration ==="); 
 
   const location = useLocation();
-  const email = location.state.email
+  const email = location.state?.email
 
   return (
     <RegistrationArea>
