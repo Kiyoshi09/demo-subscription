@@ -13,7 +13,7 @@ export const BodyMiddle1 = () => {
       <ImageContainer>
         <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png" alt="" />
         <AnimationContainer>
-          <video className="video" src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-jp-0819.m4v" autoPlay muted loop></video>
+          <video className="video" src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v" autoPlay muted loop></video>
         </AnimationContainer>
       </ImageContainer>
       <Spacer2 />
