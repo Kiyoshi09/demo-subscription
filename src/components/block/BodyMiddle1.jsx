@@ -21,6 +21,7 @@ export const BodyMiddle1 = () => {
   );
 };
 
+
 const BoddyMiddle1Container = styled.div`
   display: flex;
   position: relative;
