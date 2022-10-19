@@ -18,15 +18,17 @@ export const MovieMain = () => {
     const getCurrentUserInfo = async () => {
       const userInfo = await Auth.currentUserInfo();
       console.log(`userInfo : ${JSON.stringify(userInfo)}`);
-      const email = userInfo.attributes.email;
+      const email = userInfo.attributes?.email;
 
-      window.utag && 
-        window.utag.link({
-          "tealium_event": "authenticated",
-          "email": email,
-        });
+      if(email) {
+        window.utag && 
+          window.utag.link({
+            "tealium_event": "authenticated",
+            "email": email,
+          });
 
-      sessionStorage.setItem("tealdemo-st-email", email);
+        sessionStorage.setItem("tealdemo-st-email", email);
+      }
     }
 
     getCurrentUserInfo();

@@ -35,7 +35,10 @@ export const HeaderMovie = memo(({SearchMode, SearchKeyword}) => {
     sessionStorage.removeItem("tealdemo-st-email");
 
     signOut();
-    navigate("/");
+    
+    setTimeout(() => {
+      navigate("/");
+    }, 100);
   }
 
   const onOpenAccountPage = () => {
