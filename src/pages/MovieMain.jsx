@@ -14,15 +14,19 @@ export const MovieMain = () => {
   const [ keyword, setKeyword ] = useState("");
 
   useEffect(() => {
+
     const getCurrentUserInfo = async () => {
       const userInfo = await Auth.currentUserInfo();
       console.log(`userInfo : ${JSON.stringify(userInfo)}`);
+      const email = userInfo.attributes.email;
 
       window.utag && 
-          window.utag.link({
-            "tealium_event": "authenticated",
-            "email": userInfo.attributes.email,
-          });
+        window.utag.link({
+          "tealium_event": "authenticated",
+          "email": email,
+        });
+
+      sessionStorage.setItem("tealdemo-st-email", email);
     }
 
     getCurrentUserInfo();

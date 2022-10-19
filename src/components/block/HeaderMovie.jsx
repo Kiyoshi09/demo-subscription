@@ -31,6 +31,8 @@ export const HeaderMovie = memo(({SearchMode, SearchKeyword}) => {
       window.utag.link({
         "tealium_event": "signout",
       });
+    
+    sessionStorage.removeItem("tealdemo-st-email");
 
     signOut();
     navigate("/");
