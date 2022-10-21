@@ -37,7 +37,6 @@ export const Banner = () => {
   }
 
   const onPlayMovie = async (movie) => {
-    console.log(`Open....`);
     setIsPlaying(true);
 
     let trailerurl = await instance.get(
@@ -97,9 +96,11 @@ const BannerHeader = styled.header`
   object-fit: cover;
   width: 100%;
   height: 900px;
-  background-size: cover;
+  background-size: 80% auto;
   background-image: ${props => props.url && `url(https://image.tmdb.org/t/p/original${props.url})`};
-  background-position: "center center";
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 `;
 
 const BannerContents = styled.div`
