@@ -99,7 +99,6 @@ const BannerHeader = styled.header`
   background-size: 80% auto;
   background-image: ${props => props.url && `url(https://image.tmdb.org/t/p/original${props.url})`};
   background-position: center center;
-  background-attachment: fixed;
   background-repeat: no-repeat;
 `;
 
