@@ -96,7 +96,7 @@ const BannerHeader = styled.header`
   object-fit: cover;
   width: 100%;
   height: 900px;
-  background-size: 80% auto;
+  background-size: 100% auto;
   background-image: ${props => props.url && `url(https://image.tmdb.org/t/p/original${props.url})`};
   background-position: center center;
   background-repeat: no-repeat;
