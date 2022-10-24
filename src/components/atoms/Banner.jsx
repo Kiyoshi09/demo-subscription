@@ -15,7 +15,7 @@ export const Banner = () => {
 
   useLayoutEffect(() => {
     const fetchData = async () => {
-      const request = await instance.get(requests.feachTrending);
+      const request = await instance.get(requests.feactComedyMovies);
       //console.log(`Banner results: ${JSON.stringify(request.data.results)}`);
 
       setMovie(
@@ -57,7 +57,6 @@ export const Banner = () => {
   }
   
   const onClose = async () => {
-    console.log(`Close....`);
     setTrailerUrl("");
     setIsPlaying(false);
   }
@@ -96,7 +95,7 @@ const BannerHeader = styled.header`
   object-fit: cover;
   width: 100%;
   height: 900px;
-  background-size: 100% auto;
+  background-size: contain;
   background-image: ${props => props.url && `url(https://image.tmdb.org/t/p/original${props.url})`};
   background-position: center center;
   background-repeat: no-repeat;
