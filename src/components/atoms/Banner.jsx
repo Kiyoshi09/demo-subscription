@@ -15,7 +15,7 @@ export const Banner = () => {
 
   useLayoutEffect(() => {
     const fetchData = async () => {
-      const request = await instance.get(requests.feachNetflixOriginals);
+      const request = await instance.get(requests.feachTrending);
       //console.log(`Banner results: ${JSON.stringify(request.data.results)}`);
 
       setMovie(
