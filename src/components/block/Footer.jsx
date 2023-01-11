@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import styled from 'styled-components';
+import { updateTaggedTemplate } from 'typescript';
 
 export const Footer = memo(({ top, height = "20vh" }) => {
   console.log("[Rendering] === Footer ==="); 
@@ -8,22 +9,26 @@ export const Footer = memo(({ top, height = "20vh" }) => {
     {
       id: 11,
       title: "FAQ",
-      url: "#"
+      url: "#",
+      onClick: () => {},
     },
     {
       id: 12,
       title: "Investor Relations",
-      url: "#"
+      url: "#",
+      onClick: () => {},
     },
     {
       id: 13,
       title: "Ways to watch",
-      url: "#"
+      url: "#",
+      onClick: () => {},
     },
     {
       id: 14,
       title: "Corporate Information",
-      url: "#"
+      url: "#",
+      onClick: () => {},
     }
   ];
 
@@ -31,22 +36,26 @@ export const Footer = memo(({ top, height = "20vh" }) => {
     {
       id: 21,
       title: "Help Center",
-      url: "#"
+      url: "#",
+      onClick: () => {},
     },
     {
       id: 22,
       title: "Jobs",
-      url: "#"
+      url: "#",
+      onClick: () => {},
     },
     {
       id: 23,
       title: "Terms of Use",
-      url: "#"
+      url: "#",
+      onClick: () => {},
     },
     {
       id: 24,
       title: "Contact us",
-      url: "#"
+      url: "#",
+      onClick: () => {},
     }
   ];
 
@@ -54,22 +63,26 @@ export const Footer = memo(({ top, height = "20vh" }) => {
     {
       id: 31,
       title: "Account",
-      url: "#"
+      url: "#",
+      onClick: () => {},
     },
     {
       id: 32,
       title: "Redeem Gift Cards",
-      url: "#"
+      url: "#",
+      onClick: () => {},
     },
     {
       id: 33,
       title: "Privacy",
-      url: "#"
+      url: "#",
+      onClick: () => {},
     },
     {
       id: 34,
       title: "Transactions",
-      url: "#"
+      url: "#",
+      onClick: () => {},
     }
   ];
 
@@ -77,22 +90,26 @@ export const Footer = memo(({ top, height = "20vh" }) => {
     {
       id: 41,
       title: "Media Center",
-      url: "#"
+      url: "#",
+      onClick: () => {},
     },
     {
       id: 42,
       title: "Buy Gift Cards",
-      url: "#"
+      url: "#",
+      onClick: () => {},
     },
     {
       id: 43,
       title: "Cookie Preference",
-      url: "#"
+      url: "#",
+      onClick: () => { window.utag && window.utag.gdpr && window.utag.gdpr.showExplicitConsent() },
     },
     {
       id: 44,
       title: "Speed Test",
-      url: "#"
+      url: "#",
+      onClick: () => {},
     }
   ];
 
@@ -102,28 +119,28 @@ export const Footer = memo(({ top, height = "20vh" }) => {
       <FooterArea1>
         {item1.map((item) => (
           <p key={item.id}>
-            <a href={item.url}>{item.title}</a>
+            <a href={item.url} onClick={item.onClick}>{item.title}</a>
           </p>
         ))}
       </FooterArea1>
       <FooterArea2>
         {item2.map((item) => (
           <p key={item.id}>
-            <a href={item.url}>{item.title}</a>
+            <a href={item.url} onClick={item.onClick}>{item.title}</a>
           </p>
         ))}
       </FooterArea2>
       <FooterArea3>
         {item3.map((item) => (
           <p key={item.id}>
-            <a href={item.url}>{item.title}</a>
+            <a href={item.url} onClick={item.onClick}>{item.title}</a>
           </p>
         ))}
       </FooterArea3>
       <FooterArea4>
         {item4.map((item) => (
           <p key={item.id}>
-            <a href={item.url}>{item.title}</a>
+            <a href={item.url} onClick={item.onClick}>{item.title}</a>
           </p>
         ))}
       </FooterArea4>
