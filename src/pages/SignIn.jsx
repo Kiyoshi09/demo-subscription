@@ -19,7 +19,7 @@ export const SignIn = () => {
             //   <button onClick={ signOut }>Sign out</button>
             // </div>
 
-            <Navigate replace to="/moviemain" />
+            <Navigate replace to="/moviemain?from=signin" />
 
           )
         }

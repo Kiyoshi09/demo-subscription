@@ -16,7 +16,7 @@ export const Registration = () => {
           <p> You just created your account : { email } </p>
         </div> */}
 
-        <Navigate replace to="/moviemain" />
+        <Navigate replace to="/moviemain?from=signup" />
 
       </MyAuthenticator>
     </RegistrationArea>
