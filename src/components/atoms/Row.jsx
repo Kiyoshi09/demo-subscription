@@ -129,7 +129,7 @@ export const Row = memo(({ title, fetchUrl, isLargeRow }) => {
           //       "genre_ids": movie.genre_ids,
           //       "milestone": nInterval,
           //     });
-          // }
+          }
 
         }, 1000);
         break;
