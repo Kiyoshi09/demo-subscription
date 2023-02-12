@@ -75,35 +75,35 @@ export const Row = memo(({ title, fetchUrl, isLargeRow }) => {
   }
 
   const onPlay = (movie) => {
-    window.utag && 
-      window.utag.link({
-        "tealium_event": "play_movie",
-        "movieid": movie.id,
-        "title": movie.title,
-        "genre_ids": movie.genre_ids,
-      });
+    // window.utag && 
+    //   window.utag.link({
+    //     "tealium_event": "play_movie",
+    //     "movieid": movie.id,
+    //     "title": movie.title,
+    //     "genre_ids": movie.genre_ids,
+    //   });
   }
 
   const onPause = (movie) => {
-    window.utag && 
-      window.utag.link({
-        "tealium_event": "pause_movie",
-        "movieid": movie.id,
-        "title": movie.title,
-        "genre_ids": movie.genre_ids,
-      });
+    // window.utag && 
+    //   window.utag.link({
+    //     "tealium_event": "pause_movie",
+    //     "movieid": movie.id,
+    //     "title": movie.title,
+    //     "genre_ids": movie.genre_ids,
+    //   });
   }
 
   const onEnd = (movie) => {
     console.log(`[${movie.title}] : onEnd`);
 
-    window.utag && 
-      window.utag.link({
-        "tealium_event": "end_movie",
-        "movieid": movie.id,
-        "title": movie.title,
-        "genre_ids": movie.genre_ids,
-      });
+    // window.utag && 
+    //   window.utag.link({
+    //     "tealium_event": "end_movie",
+    //     "movieid": movie.id,
+    //     "title": movie.title,
+    //     "genre_ids": movie.genre_ids,
+    //   });
   }
 
   const onStateChange = (e, movie) => {
@@ -121,14 +121,14 @@ export const Row = memo(({ title, fetchUrl, isLargeRow }) => {
 
           if(nInterval % 10.0 === 0.0){
 
-            window.utag && 
-              window.utag.link({
-                "tealium_event": "milestone_movie",
-                "movieid": movie.id,
-                "title": movie.title,
-                "genre_ids": movie.genre_ids,
-                "milestone": nInterval,
-              });
+          //   window.utag && 
+          //     window.utag.link({
+          //       "tealium_event": "milestone_movie",
+          //       "movieid": movie.id,
+          //       "title": movie.title,
+          //       "genre_ids": movie.genre_ids,
+          //       "milestone": nInterval,
+          //     });
           }
 
         }, 1000);
