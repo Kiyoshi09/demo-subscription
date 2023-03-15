@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import styled from 'styled-components';
-import { updateTaggedTemplate } from 'typescript';
+// import { updateTaggedTemplate } from 'typescript';
 
 export const Footer = memo(({ top, height = "20vh" }) => {
   console.log("[Rendering] === Footer ==="); 
